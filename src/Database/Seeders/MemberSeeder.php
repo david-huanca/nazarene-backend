@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Seeders;
+namespace Nazarene\Backend\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Member;
