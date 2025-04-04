@@ -1,12 +1,12 @@
 <?php
 
-namespace Database\Seeders;
+namespace Nazarene\Backend\Database\Seeders;
 
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-class UserSeeder extends Seeder
+class UserNazareneSeeder extends Seeder
 {
     /**
      * Run the database seeds.

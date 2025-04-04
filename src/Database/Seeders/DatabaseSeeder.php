@@ -20,13 +20,13 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
         $this->call(MinistrySeeder::class);
-        $this->call(UserSeeder::class);
-        $this->call(RegionSeeder::class);
-        $this->call(AreaSeeder::class);
-        $this->call(CountrySeeder::class);
-        $this->call(DistrictSeeder::class);
-        $this->call(ChurchSeeder::class);
-        $this->call(MemberSeeder::class);
+        // $this->call(UserNazareneSeeder::class);
+        // $this->call(RegionSeeder::class);
+        // $this->call(AreaSeeder::class);
+        // $this->call(CountrySeeder::class);
+        // $this->call(DistrictSeeder::class);
+        // $this->call(ChurchSeeder::class);
+        // $this->call(MemberSeeder::class);
 
     }
 }

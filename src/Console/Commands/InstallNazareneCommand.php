@@ -1,33 +1,30 @@
 <?php
-
-namespace Nazarene\Backend\Console\Commands;
+namespace Nazarene\Backend\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
 
 class InstallNazareneCommand extends Command
 {
-    protected $signature = 'nazarene:install {--seed : Run the seeders after migration}';
-    protected $description = 'Install Nazarene package migrations and optionally seed the database';
+    protected $signature = 'nazarene:install';
+    protected $description = 'Instala el paquete Nazarene Backend.';
 
     public function handle()
     {
-        $this->info('Installing Nazarene package...');
+        $this->info('📦 Instalando Nazarene Backend...');
 
-        // Run migrations
-        $this->info('Running migrations...');
-        Artisan::call('migrate', [
-            '--path' => 'vendor/nazarene/backend/src/Database/Migrations',
-        ]);
+        // Publicar archivos de configuración, modelos, migraciones y seeders
+        Artisan::call('vendor:publish', ['--tag' => 'nazarene-config']);
+        Artisan::call('vendor:publish', ['--tag' => 'nazarene-models']);
+        Artisan::call('vendor:publish', ['--tag' => 'nazarene-migrations']);
+        Artisan::call('vendor:publish', ['--tag' => 'nazarene-seeders']);
 
-        if ($this->option('seed')) {
-            // Run seeders
-            $this->info('Running seeders...');
-            Artisan::call('db:seed', [
-                '--class' => 'Nazarene\\Backend\\Database\\Seeders\\DatabaseSeeder',
-            ]);
-        }
+        // Ejecutar migraciones
+        Artisan::call('migrate');
 
-        $this->info('Nazarene package installed successfully!');
+        // Ejecutar seeders
+        Artisan::call('db:seed', ['--class' => 'Nazarene\Backend\Database\Seeders\MinistrySeeder']);
+
+        $this->info('✅ Nazarene Backend instalado correctamente.');
     }
-} 
+}
